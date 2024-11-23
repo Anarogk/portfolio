@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import ModularOneko from '@/components/ModularOneko';
+
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -13,6 +15,9 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.ico',  // Changed from './favicon.ico' to '/favicon.ico'
+  },
   metadataBase: new URL(DATA.url),
   title: {
     default: DATA.name,
@@ -48,11 +53,17 @@ export const metadata: Metadata = {
   },
 };
 
+const catOptions = {
+  'Default': '/oneko.gif',
+  'Black Cat': '/blackcat.gif',
+  'Calico': '/calico.gif',
+} as const;
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -67,6 +78,7 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        <ModularOneko initialCat="Default" catOptions={catOptions} />
       </body>
     </html>
   );
