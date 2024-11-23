@@ -1,13 +1,26 @@
-import { HackathonCard } from "@/components/hackathon-card";
+// import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
+// import { ProjectCard } from "@/components/project-card";
+// import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import dynamic from "next/dynamic";
+// Dynamically import heavy components
+const ProjectCard = dynamic(() => import('@/components/project-card').then(mod => mod.default), {
+  loading: () => <div className="animate-pulse h-64 bg-muted rounded-lg" />
+})
+
+const HackathonCard = dynamic(() => import('@/components/hackathon-card').then(mod => mod.HackathonCard), {
+  loading: () => <div className="animate-pulse h-32 bg-muted rounded-lg" />
+})
+
+const ResumeCard = dynamic(() => import('@/components/resume-card').then(mod => mod.ResumeCard), {
+  loading: () => <div className="animate-pulse h-24 bg-muted rounded-lg" />
+})
 
 const BLUR_FADE_DELAY = 0.07;
 
