@@ -1,4 +1,3 @@
-// import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 // import { ProjectCard } from "@/components/project-card";
@@ -12,10 +11,6 @@ import dynamic from "next/dynamic";
 // Dynamically import heavy components
 const ProjectCard = dynamic(() => import('@/components/project-card').then(mod => mod.default), {
   loading: () => <div className="animate-pulse h-64 bg-muted rounded-lg" />
-})
-
-const HackathonCard = dynamic(() => import('@/components/hackathon-card').then(mod => mod.HackathonCard), {
-  loading: () => <div className="animate-pulse h-32 bg-muted rounded-lg" />
 })
 
 const ResumeCard = dynamic(() => import('@/components/resume-card').then(mod => mod.ResumeCard), {
@@ -36,16 +31,16 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={`Hi!  I'm ${DATA.name.split(" ")[0]} 👋`}
               />
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <div className="md:text-lg font-semibold tracking-tighter sm:text-3xl xl:text-4xl/none mb-4">
+                  <span>{DATA.nickname}</span>
+                  <span className="nickname-location">📍 Pune, India</span>
+                </div>
+              </BlurFade>
               <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="md:text-lg font-semibold tracking-tighter sm:text-3xl xl:text-4xl/none"
-                yOffset={8}
-                text={DATA.nickname}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-md"
+                className="max-w-[600px] text-base md:text-lg"
                 delay={BLUR_FADE_DELAY}
                 yOffset={8}
                 text={DATA.description}
@@ -62,18 +57,18 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-2xl font-bold">About</h2>
+          <h2 className="text-2xl font-bold mb-4">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-base md:text-lg dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
       </section>
       <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-2xl font-bold">Work Experience</h2>
+            <h2 className="text-2xl font-bold mb-4">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
@@ -90,6 +85,7 @@ export default function Page() {
                 badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
                 description={work.description}
+                location={work.location}
               />
             </BlurFade>
           ))}
@@ -173,52 +169,9 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="hackathons">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-lg">
-                  Hackathons
-                </div>
-                <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
-                  I like building things
-                </h2>
-                <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  {DATA.hackathons.length}+ hackathons. People from around the
-                  country would come together and build incredible things in
-                  2-3 days. It was eye-opening to see the endless
-                  possibilities brought to life by a group of motivated and
-                  passionate individuals.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-      </section>
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="space-y-3">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                 Contact
