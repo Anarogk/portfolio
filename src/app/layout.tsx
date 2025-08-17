@@ -53,12 +53,6 @@ export const metadata: Metadata = {
   },
 };
 
-const catOptions = {
-  'Default': '/oneko.gif',
-  'Black Cat': '/blackcat.gif',
-  'Calico': '/calico.gif',
-} as const;
-
 export default function RootLayout({
   children,
 }: {
@@ -78,7 +72,7 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
-        <ModularOneko initialCat="Default" catOptions={catOptions} />
+        <ModularOneko />
       </body>
     </html>
   );

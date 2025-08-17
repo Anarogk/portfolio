@@ -1,14 +1,8 @@
 "use client";
 import dynamic from 'next/dynamic';
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
-interface OnekoProps {
-    initialCat: string;
-    catOptions: Record<string, string>;
-}
-
-const ModularOneko: React.FC<OnekoProps> = ({ initialCat, catOptions }) => {
-    const [currentCat, setCurrentCat] = useState(initialCat);
+const ModularOneko: React.FC = () => {
     const nekoRef = useRef<HTMLDivElement>(null);
 
     const spriteSets = {
@@ -236,46 +230,28 @@ const ModularOneko: React.FC<OnekoProps> = ({ initialCat, catOptions }) => {
 
     useEffect(() => {
         if (nekoRef.current) {
-            nekoRef.current.style.backgroundImage = `url(${catOptions[currentCat]})`;
+            nekoRef.current.style.backgroundImage = `url(/oneko.gif)`;
         }
-    }, [currentCat, catOptions]);
+    }, []);
 
     return (
-        <>
-            <div
-                ref={nekoRef}
-                id="oneko"
-                aria-hidden="true"
-                style={{
-                    width: '32px',
-                    height: '32px',
-                    position: 'fixed',
-                    pointerEvents: 'none',
-                    imageRendering: 'pixelated',
-                    left: '16px',
-                    top: '16px',
-                    zIndex: 9999,
-                    backgroundImage: `url(/oneko.gif)`,
-                    backgroundRepeat: 'no-repeat',
-                }}
-            />
-            <select
-                value={currentCat}
-                onChange={(e) => setCurrentCat(e.target.value)}
-                style={{
-                    position: 'fixed',
-                    top: '10px',
-                    right: '10px',
-                    zIndex: 10000,
-                }}
-            >
-                {Object.keys(catOptions).map((cat) => (
-                    <option key={cat} value={cat}>
-                        {cat}
-                    </option>
-                ))}
-            </select>
-        </>
+        <div
+            ref={nekoRef}
+            id="oneko"
+            aria-hidden="true"
+            style={{
+                width: '32px',
+                height: '32px',
+                position: 'fixed',
+                pointerEvents: 'none',
+                imageRendering: 'pixelated',
+                left: '16px',
+                top: '16px',
+                zIndex: 9999,
+                backgroundImage: `url(/oneko.gif)`,
+                backgroundRepeat: 'no-repeat',
+            }}
+        />
     );
 };
 

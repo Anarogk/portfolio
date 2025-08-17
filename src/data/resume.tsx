@@ -274,28 +274,28 @@ export const DATA = {
     // },
   ],
   hackathons: [
-    {
-      title: "Hack Western 5",
-      dates: "November 23rd - 25th, 2018",
-      location: "London, Ontario",
-      description:
-        "Developed a mobile application which delivered bedtime stories to children using augmented reality.",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
-    },
-    {
-      title: "Hack The North",
-      dates: "September 14th - 16th, 2018",
-      location: "Waterloo, Ontario",
-      description:
-        "Developed a mobile application which delivers university campus wide events in real time to all students.",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-north.png",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
-    },
+    // {
+    //   title: "Hack Western 5",
+    //   dates: "November 23rd - 25th, 2018",
+    //   location: "London, Ontario",
+    //   description:
+    //     "Developed a mobile application which delivered bedtime stories to children using augmented reality.",
+    //   image:
+    //     "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
+    //   mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
+    //   links: [],
+    // },
+    // {
+    //   title: "Hack The North",
+    //   dates: "September 14th - 16th, 2018",
+    //   location: "Waterloo, Ontario",
+    //   description:
+    //     "Developed a mobile application which delivers university campus wide events in real time to all students.",
+    //   image:
+    //     "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-north.png",
+    //   mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
+    //   links: [],
+    // },
   ],
 } as const;
 //   {
