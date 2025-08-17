@@ -88,18 +88,154 @@
   .resume-bullet {
     @apply flex-shrink-0 w-2.5 h-2.5 bg-gradient-to-r from-primary to-primary/80 rounded-full mt-2.5 shadow-sm;
     animation: pulse 2s infinite;
+    margin-left: 0;
   }
   
   .resume-bullet-container {
     @apply space-y-3;
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .resume-bullet-item {
-    @apply flex items-start space-x-3 text-sm sm:text-base transition-all duration-200 hover:translate-x-1;
+    @apply flex items-start space-x-3 text-sm sm:text-base;
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .resume-bullet-text {
     @apply text-muted-foreground leading-relaxed font-medium;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /* Highlighted words styling */
+  .highlight {
+    @apply text-primary font-semibold;
+    background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(var(--primary), 0.1) 50%, transparent 100%);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .highlight:hover {
+    background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(var(--primary), 0.2) 50%, transparent 100%);
+    transform: translateY(-1px);
+  }
+
+  /* Work experience description alignment */
+  .work-description {
+    @apply text-left;
+    padding-left: 0; /* Align with company name position */
+    margin-left: 0;
+    transform: translateX(-1rem); /* Shift 16px to the left */
+  }
+  
+  .work-description ul {
+    @apply text-left;
+    padding-left: 0; /* Remove default list padding */
+    margin-left: 0;
+    transform: translateX(-1rem); /* Shift 16px to the left */
+  }
+  
+  .work-description li {
+    @apply text-left;
+    padding-left: 0; /* Remove default list item padding */
+    margin-left: 0;
+    transform: translateX(-1rem); /* Shift 16px to the left */
+  }
+
+  /* Company link styling */
+  .company-link {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200 font-semibold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 1.5rem; /* 24px - bigger company name */
+    line-height: 1.4;
+  }
+  
+  .company-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Nickname location styling */
+  .nickname-location {
+    @apply text-muted-foreground font-normal;
+    font-size: 1rem; /* 16px - matches text-base */
+    margin-left: 0.75rem; /* Space between nickname and location */
+    opacity: 0.8; /* Slightly muted appearance */
+  }
+
+  /* Responsive font sizing for nickname location to match About section */
+  @media (min-width: 768px) {
+    .nickname-location {
+      font-size: 1.125rem; /* 18px - matches md:text-lg */
+    }
+  }
+
+  /* Position title styling */
+  .position-title {
+    @apply font-semibold text-muted-foreground;
+    font-size: 1rem; /* 16px - same as description text */
+    line-height: 1.4;
+    margin-top: 0.125rem; /* Reduced spacing */
+  }
+
+  /* Location styling with pin emoji */
+  .location-info {
+    @apply flex items-center gap-1 text-muted-foreground;
+    font-size: 1rem; /* 16px - same as description text */
+    line-height: 1.4;
+    margin-left: 0; /* No left margin since it's below company name */
+    white-space: nowrap; /* Prevent location from wrapping */
+    margin-top: 0.25rem; /* Space below company name */
+  }
+
+  .location-pin {
+    @apply text-primary;
+    font-size: 1rem;
+  }
+
+  /* Work experience card improvements */
+  .work-experience-card {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .work-experience-card:hover {
+    @apply shadow-lg transform -translate-y-1;
+  }
+  
+  .work-description-container {
+    @apply mt-4;
+    padding-left: 0; /* Align with company name */
+  }
+  
+  /* Layout improvements */
+  .card-header-content {
+    @apply flex flex-col gap-2;
+  }
+  
+  .company-info-row {
+    @apply flex flex-col gap-1; /* Stack vertically with small gap */
+    align-items: flex-start; /* Ensure items align to the left */
+  }
+  
+  .company-badges {
+    @apply flex items-center gap-1;
+  }
+  
+  .period-info {
+    @apply text-right text-sm text-muted-foreground;
+    min-width: fit-content;
+  }
+  
+  /* Company link styling */
+  .company-link {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200 font-semibold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 1.5rem; /* 24px - bigger company name */
+    line-height: 1.4;
   }
   
   @keyframes pulse {
@@ -180,3 +316,52 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+
+  /* Project card improvements */
+  .project-card {
+    @apply rounded-lg border border-gray-200 dark:border-gray-700;
+  }
+  
+  .project-card .prose {
+    @apply text-base leading-relaxed;
+  }
+  
+  .project-card .prose p {
+    @apply mb-0;
+  }
+  
+  /* Ensure proper spacing in project cards */
+  .project-card .card-header,
+  .project-card .card-content,
+  .project-card .card-footer {
+    @apply w-full;
+  }
+  
+  /* Project card sizing and layout */
+  .project-card {
+    height: 20rem; /* 320px - smaller than before */
+    max-width: 24rem; /* 384px - max width constraint */
+    min-width: 20rem; /* 320px - min width constraint */
+  }
+  
+  /* Ensure consistent card heights */
+  .project-card .card-header {
+    flex-shrink: 0;
+  }
+  
+  .project-card .card-content {
+    flex: 1;
+    min-height: 0;
+  }
+  
+  .project-card .card-footer {
+    flex-shrink: 0;
+  }
+  
+  /* Line clamp for description text */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }

@@ -9,9 +9,9 @@ export const DATA = {
   location: "Pune, India",
   locationLink: "https://maps.app.goo.gl/VA6LxJc6RnmtfWjg6",
   description:
-    "I'm a 22 year old Software Engineer, System Programmer,  and a Full Stack Developer, overall technology obsessed Guy from Pune, India.",
+    "I'm a Software Engineer, System Programmer, interested in security development.",
   summary:
-    "SWE [@cloudanix](https://www.cloudanix.com/) since sept 2024, I always wanted to be a Software Engineer. Initially, I was into gaming and video games were my driving force but I quickly fell in love with software development and here I am now.",
+    "Helping Build a Code2Cloud security platform [@cloudanix](https://www.cloudanix.com/) since sept 2024, I always wanted to be a Software Engineer. Initially, I was into gaming and video games were my driving force but I quickly fell in love with software development and here I am now.",
   avatarUrl: "/me.png",
   skills: [
     "Python",
@@ -19,11 +19,11 @@ export const DATA = {
     "Postgres",
     "Docker",
     "Kubernetes",
-    "C++",
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
+    "AppSec",
+    "AWS",
+    "Azure",
+    "Neo4j",
+    "CI/CD",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -76,18 +76,15 @@ export const DATA = {
       href: "https://www.cloudanix.com/",
       badges: [],
       location: "San Francisco, CA",
-      title: "SWE (Software Engineer)",
+      title: "SWE (Remote)",
       logoUrl: "/cloudanix.png",
       start: "Sept 2024",
       end: "Present",
       description: [
-        "Developed and maintained a comprehensive Code Security Platform with support for GitHub, Bitbucket, and GitLab integrations",
-        "Implemented automated security scanning and vulnerability detection for CI/CD pipelines",
-        "Built real-time monitoring dashboards for code security metrics and compliance reporting",
-        "Designed and optimized database schemas for handling large-scale security scan results",
-        "Collaborated with DevOps teams to integrate security tools into existing development workflows",
-        "Reduced security scan time by 40% through optimization of scanning algorithms and parallel processing",
-        "Implemented automated alerting system for critical security vulnerabilities with 99.9% accuracy"
+        "Contributed and maintained <span class='highlight'>cloud-native</span> <span class='highlight'>code security</span> platform supporting <span class='highlight'>SCA</span>, <span class='highlight'>SAST</span>, and <span class='highlight'>secret scanning</span>, enabling proactive vulnerability management for <span class='highlight'>thousands</span> of GitHub, GitLab, Bitbucket, and Azure DevOps repositories, including large mono-repos.",
+        "Migrated internal services and cloud APIs from Azure to AWS, re-architecting workloads onto <span class='highlight'>Amazon EKS</span>.",
+        "Worked with leading <span class='highlight'>AppSec and SCA</span> tools including Semgrep, CycloneDX, Trivy, OSVscanner, Deps.dev, and more.",
+        "Independently developed a Azure DevOps extension and GitLab component for <span class='highlight'> container security</span>, integrating into CI/CD pipelines and scaling to secure <span class='highlight'>Thousands of customer repositories.</span>",
       ],
     },
     // {
@@ -155,10 +152,11 @@ export const DATA = {
     {
       school: "Savitribai Phule Pune University",
       href: "http://www.unipune.ac.in/",
-      degree: "B.E in Artificial Intelligence & Machine Learning",
+      degree: "Bachelor of Engineering in Artificial Intelligence & Machine Learning",
       logoUrl: "/sppu.png",
       start: "2020",
       end: "2024",
+      description: "",
     },
     
   ],
@@ -182,7 +180,7 @@ export const DATA = {
         {
           type: "Source",
           href: "https://github.com/Anarogk/SecureSend",
-          icon: <Icons.github className="size-3" />,
+          icon: <Icons.github className="size-4" />,
         },
       ],
       image: "",
@@ -206,7 +204,7 @@ export const DATA = {
         {
           type: "Source",
           href: "https://github.com/Anarogk/HandNav",
-          icon: <Icons.github className="size-3" />,
+          icon: <Icons.github className="size-4" />,
         },
       ],
       image: "",
@@ -229,7 +227,7 @@ export const DATA = {
         {
           type: "Source",
           href: "https://github.com/Anarogk/Resolver",
-          icon: <Icons.github className="size-3" />,
+          icon: <Icons.github className="size-4" />,
         },
       ],
       image: "",

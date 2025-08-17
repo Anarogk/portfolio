@@ -31,16 +31,16 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={`Hi!  I'm ${DATA.name.split(" ")[0]} 👋`}
               />
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <div className="md:text-lg font-semibold tracking-tighter sm:text-3xl xl:text-4xl/none mb-4">
+                  <span>{DATA.nickname}</span>
+                  <span className="nickname-location">📍 Pune, India</span>
+                </div>
+              </BlurFade>
               <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="md:text-lg font-semibold tracking-tighter sm:text-3xl xl:text-4xl/none"
-                yOffset={8}
-                text={DATA.nickname}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-lg lg:text-xl"
+                className="max-w-[600px] text-base md:text-lg"
                 delay={BLUR_FADE_DELAY}
                 yOffset={8}
                 text={DATA.description}
@@ -57,18 +57,18 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-2xl font-bold">About</h2>
+          <h2 className="text-2xl font-bold mb-4">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-base md:text-lg text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-base md:text-lg dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
       </section>
       <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-2xl font-bold">Work Experience</h2>
+            <h2 className="text-2xl font-bold mb-4">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
@@ -85,6 +85,7 @@ export default function Page() {
                 badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
                 description={work.description}
+                location={work.location}
               />
             </BlurFade>
           ))}

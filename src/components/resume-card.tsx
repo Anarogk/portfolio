@@ -2,10 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -18,6 +15,7 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string | readonly string[];
+  location?: string;
 }
 export const ResumeCard = ({
   logoUrl,
@@ -28,40 +26,25 @@ export const ResumeCard = ({
   badges,
   period,
   description,
+  location,
 }: ResumeCardProps) => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (description) {
-      e.preventDefault();
-      setIsExpanded(!isExpanded);
-    }
-  };
-
   const renderDescription = () => {
     if (!description) return null;
     
     if (Array.isArray(description)) {
       return (
-        <ul className="resume-bullet-container">
+        <ul className="resume-bullet-container work-description">
           {description.map((item, index) => (
-            <motion.li
+            <li
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ 
-                opacity: isExpanded ? 1 : 0,
-                x: isExpanded ? 0 : -20 
-              }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
               className="resume-bullet-item"
             >
               <span className="resume-bullet"></span>
-              <span className="resume-bullet-text">{item}</span>
-            </motion.li>
+              <span 
+                className="resume-bullet-text"
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            </li>
           ))}
         </ul>
       );
@@ -69,47 +52,49 @@ export const ResumeCard = ({
     
     // Fallback for string descriptions
     return (
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{
-          opacity: isExpanded ? 1 : 0,
-          height: isExpanded ? "auto" : 0,
-        }}
-        transition={{
-          duration: 0.7,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className="mt-2 text-sm sm:text-base text-muted-foreground"
-      >
-        {description}
-      </motion.div>
+      <div className="mt-2 text-sm sm:text-base text-muted-foreground work-description">
+        <div dangerouslySetInnerHTML={{ __html: description }} />
+      </div>
     );
   };
 
   return (
-    <Link
-      href={href || "#"}
-      className="block cursor-pointer"
-      onClick={handleClick}
-    >
-      <Card className="flex">
-        <div className="flex-none">
-          <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
-            <AvatarImage
-              src={logoUrl}
-              alt={altText}
-              className="object-contain"
-            />
-            <AvatarFallback>{altText[0]}</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
-          <CardHeader>
-            <div className="flex items-center justify-between gap-x-2 text-lg">
-              <h3 className="inline-flex items-center justify-center font-semibold leading-none text-sm sm:text-base">
-                {title}
+    <div className="flex border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
+      <div className="flex-none">
+        <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
+          <AvatarImage
+            src={logoUrl}
+            alt={altText}
+            className="object-contain"
+          />
+          <AvatarFallback>{altText[0]}</AvatarFallback>
+        </Avatar>
+      </div>
+      <div className="flex-grow ml-4 items-center flex-col group">
+        <div className="mb-4">
+          <div className="flex items-start justify-between gap-x-4">
+            <div className="card-header-content flex-1">
+              <div className="company-info-row">
+                {href ? (
+                  <Link
+                    href={href}
+                    className="company-link inline-flex items-center justify-center font-semibold leading-none"
+                  >
+                    {title}
+                  </Link>
+                ) : (
+                  <h3 className="company-link inline-flex items-center justify-center font-semibold leading-none">
+                    {title}
+                  </h3>
+                )}
+                {location && (
+                  <div className="location-info">
+                    <span className="location-pin">📍</span>
+                    <span>{location}</span>
+                  </div>
+                )}
                 {badges && (
-                  <span className="inline-flex gap-x-1">
+                  <span className="company-badges">
                     {badges.map((badge, index) => (
                       <Badge
                         variant="secondary"
@@ -121,37 +106,20 @@ export const ResumeCard = ({
                     ))}
                   </span>
                 )}
-                <ChevronRightIcon
-                  className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
-                    isExpanded ? "rotate-90" : "rotate-0"
-                  )}
-                />
-              </h3>
-              <div className="text-sm sm:text-base tabular-nums text-muted-foreground text-right">
-                {period}
               </div>
+              {subtitle && <div className="position-title">{subtitle}</div>}
             </div>
-            {subtitle && <div className="font-sans text-sm">{subtitle}</div>}
-          </CardHeader>
-          {description && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: isExpanded ? 1 : 0,
-                height: isExpanded ? "auto" : 0,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-2 px-4 pb-4"
-            >
-              {renderDescription()}
-            </motion.div>
-          )}
+            <div className="period-info">
+              {period}
+            </div>
+          </div>
         </div>
-      </Card>
-    </Link>
+        {description && (
+          <div className="work-description-container px-6 pb-4 work-description">
+            {renderDescription()}
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
